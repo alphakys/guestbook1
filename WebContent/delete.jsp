@@ -4,14 +4,22 @@
 
 
 <%
+request.setCharacterEncoding("UTF-8");
+
 int no = Integer.parseInt(request.getParameter("no"));
 
 String password = request.getParameter("password");
 
 GuestBookDao gd = new GuestBookDao();
-gd.delete(no);
 
+int success = gd.delete(no, password);
 
+if(success!=0){
+	response.sendRedirect("./addList.jsp");
+}
+else{
+	response.sendRedirect("./deleteForm.jsp");
+}
 %>
 
 <!DOCTYPE html>
@@ -21,6 +29,9 @@ gd.delete(no);
 <title>Insert title here</title>
 </head>
 <body>
+
+	<% %>
+
 
 </body>
 </html>

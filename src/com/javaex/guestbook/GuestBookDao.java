@@ -128,17 +128,30 @@ public class GuestBookDao {
 		getConnection();
 		
 		
-		
 		try {
 		    // 3. SQL문 준비 / 바인딩 / 실행
-		    String query = "delete from guestbook ";
-		    	   query += "where no = ? ";
+			String getPw = "select password ";
+				   getPw = "from   guestbook ";
+				   getPw = "where no = ? ";
+				
+			pstmt = conn.prepareStatement(getPw);
+			pstmt.setInt(1, no);
+			
+			rs = pstmt.executeQuery(getPw);
+			String pw = rs.getString(password);
+			
+			if(password.equals(pw)) {
+				
+				String query = "delete from guestbook ";
+		    	   	   query += "where no = ? ";
 
-		    pstmt = conn.prepareStatement(query);	   
-		    pstmt.setInt(1, no);
-		   
-		    // 4. 결과처리
-		   count = pstmt.executeUpdate();
+		    	   	   pstmt = conn.prepareStatement(query);	   
+		    	   	   pstmt.setInt(1, no);
+		    	   	   
+		    	   	   count = pstmt.executeUpdate();
+		    	   	   
+			}
+			
 		   
 		   conn.commit(); 
 		    

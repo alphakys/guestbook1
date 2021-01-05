@@ -31,7 +31,7 @@ List<GuestBookVo> list = gd.getList();
 </head>
 
 <body>
-	<form action="add.jsp" method="get" accept-charset="UTF-8">
+	<form action="add.jsp" method="post" accept-charset="UTF-8">
 		<table border = '1' >
 			<tr>
 				<td>이름</td>
@@ -57,14 +57,14 @@ List<GuestBookVo> list = gd.getList();
 		<%for(int i=0; i< list.size(); i++){ %>
 	 	<table border = '1'>
 			<tr>
-				<td><%=list.get(i).no  %></td>
-				<td><%=list.get(i).name  %></td>
-				<td><%=list.get(i).date  %></td>
-				<td><a href="deleteForm.jsp?no=<%=list.get(i).no  %>">삭제</a></td>
+				<td><%=list.get(i).no%></td>
+				<td><%=list.get(i).name%></td>
+				<td><%=list.get(i).date%></td>
+				<td><a href="deleteForm.jsp?no=<%=list.get(i).no%>">삭제</a></td>
 			</tr>
 			
 			<tr>
-				<td colspan='4'><%=list.get(i).content  %></td>	
+				<td colspan='4'><%=list.get(i).content%></td>	
 			</tr>
 			
 		</table>
