@@ -1,22 +1,34 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8"%>
 
 <%@ page import="com.javaex.guestbook.*" %>
+<%@ page import="javax.swing.*" %>
 
 <%
 request.setCharacterEncoding("UTF-8");
 // addList에서의 파라미터 값 받기
+
 String name = request.getParameter("name");
 String password = request.getParameter("password");
 String content = request.getParameter("content");
 
-// 받은 파라미터 값 인스턴스
-GuestBookVo gv = new GuestBookVo(name, password, content);
-
-// Dao에 insert
-GuestBookDao gd = new GuestBookDao();
-gd.insert(gv);
+if(content != "" && name != "" && content != "" ){
+	GuestBookVo gv = new GuestBookVo(name, password, content);
+	GuestBookDao gd = new GuestBookDao();
+	gd.insert(gv);
+	response.sendRedirect("./addList.jsp");
+}
+else{
+	response.getWriter().print("이름, 비밀번호, 내용을 반드시 입력해주세요");
+	
+}
 
 %>
+
+
+
+
+
 
 <!DOCTYPE html>
 <html>
@@ -25,6 +37,6 @@ gd.insert(gv);
 <title>Insert title here</title>
 </head>
 <body>
-	<%response.sendRedirect("./addList.jsp"); %>
+	
 </body>
 </html>

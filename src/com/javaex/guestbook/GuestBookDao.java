@@ -121,7 +121,7 @@ public class GuestBookDao {
 		return gList;
 	}
 	
-	
+	//DB에서 데이터 하나 가져오기
 	public GuestBookVo getGuest(int no){
 		
 		getConnection();
@@ -167,8 +167,36 @@ public class GuestBookDao {
 		
 	}
 	
+	//비밀번호 아이디 맞는지 체크만 하는 기능
 	
+	public int check(int no, String name, String password){
+		
+		getConnection();
+		
+		
+		try {
+		    // 3. SQL문 준비 / 바인딩 / 실행
+		
+				String query = "delete from guestbook ";
+		    	   	   query += "where no = ? and name = ? and password = ? ";
+		    	   	   
+		    	   	   pstmt = conn.prepareStatement(query);	   
+		    	   	   pstmt.setInt(1, no);
+		    	   	   pstmt.setString(2, name);
+		    	   	   pstmt.setString(3, password);
+		    	   	
+		    	   	   count = pstmt.executeUpdate();
 	
+		   conn.commit(); 
+		    
+		}  catch (SQLException e) {
+		    System.out.println("error:" + e);
+		} 
+		
+		close();
+		
+		return count;
+	}
 	
 	
 	
