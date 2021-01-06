@@ -10,20 +10,20 @@ int num = Integer.parseInt(request.getParameter("no"));
 
 String password = request.getParameter("password");
 
+String name = request.getParameter("name");
+
 GuestBookDao gd = new GuestBookDao();
 
-GuestBookVo gv = gd.getGuest(num);
 
-	if(password.equals(gv.pw)){
-		gd.delete(num);
+
+%>	
+		
 	
-		response.sendRedirect("./addList.jsp");
-		}
-	else{
-		response.getWriter().print("다시 입력해주세요");
-		}
+		
+		
+	
 
-%>
+
 
 <!DOCTYPE html>
 <html>
@@ -32,8 +32,19 @@ GuestBookVo gv = gd.getGuest(num);
 <title>Insert title here</title>
 </head>
 <body>
-		
+		<% if(gd.delete(num, name, password)==1){ %>
+			
+			삭제되었습니다.<br>
+			
+			<a href="addList.jsp">메인으로 돌아가기</a>
+			<%} else{%>
+				
+				비밀번호가 틀렸습니다.<br><br>
+			<a href="deleteForm.jsp?no=<%=num%>">비밀번호 다시 입력하기</a>
+			
+			<%} %>
+			
 		<br>
-		<a href="deleteForm.jsp?no=<%=num%>">비밀번호 다시 입력하기</a>
+		
 </body>
 </html>

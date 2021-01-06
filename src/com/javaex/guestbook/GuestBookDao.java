@@ -176,7 +176,7 @@ public class GuestBookDao {
 	
 	
 	//DB에서 삭제
-	public int delete(int no){
+	public int delete(int no, String name, String password){
 		
 		getConnection();
 		
@@ -185,16 +185,15 @@ public class GuestBookDao {
 		    // 3. SQL문 준비 / 바인딩 / 실행
 		
 				String query = "delete from guestbook ";
-		    	   	   query += "where no = ? ";
-
+		    	   	   query += "where no = ? and name = ? and password = ? ";
+		    	   	   
 		    	   	   pstmt = conn.prepareStatement(query);	   
 		    	   	   pstmt.setInt(1, no);
-		    	   	   
+		    	   	   pstmt.setString(2, name);
+		    	   	   pstmt.setString(3, password);
+		    	   	
 		    	   	   count = pstmt.executeUpdate();
-		    	   	   
-			
-			
-		   
+	
 		   conn.commit(); 
 		    
 		}  catch (SQLException e) {

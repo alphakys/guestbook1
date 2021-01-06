@@ -19,11 +19,11 @@ int no = Integer.parseInt(request.getParameter("no"));
 <body>
 	<h3>방명록의 아이디와 비밀번호를 입력하세요</h3>
 	
-	<p>비밀번호가 틀리면 다시 입력하셔야 합니다</p>
+	<p>이름과 비밀번호가 틀리면 다시 입력하셔야 합니다</p>
 	
 	
-	<form action="delete.jsp" method="get">
-		아이디 <input type="text" name= "password"> <br>
+	<form action="delete.jsp" method="post">
+		이름 <input type="text" name= "name"> <br>
 		비밀번호 <input type="text" name= "password"> <button type= "submit">확인</button>
 		<input type="hidden" name="no" value="<%=no%>">
 	</form>
