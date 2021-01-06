@@ -6,20 +6,23 @@
 <%
 request.setCharacterEncoding("UTF-8");
 
-int no = Integer.parseInt(request.getParameter("no"));
+int num = Integer.parseInt(request.getParameter("no"));
 
 String password = request.getParameter("password");
 
 GuestBookDao gd = new GuestBookDao();
 
-int success = gd.delete(no, password);
+GuestBookVo gv = gd.getGuest(num);
 
-if(success!=0){
-	response.sendRedirect("./addList.jsp");
-}
-else{
-	response.sendRedirect("./deleteForm.jsp");
-}
+	if(password.equals(gv.pw)){
+		gd.delete(num);
+	
+		response.sendRedirect("./addList.jsp");
+		}
+	else{
+		response.getWriter().print("다시 입력해주세요");
+		}
+
 %>
 
 <!DOCTYPE html>
@@ -29,9 +32,8 @@ else{
 <title>Insert title here</title>
 </head>
 <body>
-
-	<% %>
-
-
+		
+		<br>
+		<a href="deleteForm.jsp?no=<%=num%>">비밀번호 다시 입력하기</a>
 </body>
 </html>
