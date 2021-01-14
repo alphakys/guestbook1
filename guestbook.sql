@@ -1,9 +1,9 @@
 --guestbook 테이블 생성
 create table guestbook(
             no  number,
-            name  varchar2(80),
-            password  varchar2(20),
-            content   varchar2(2000),
+            name  varchar2(80)      not null,
+            password  varchar2(20)  not null,
+            content   varchar2(2000) not null,
             reg_date   date,
             primary     key(no)
             );
@@ -25,11 +25,11 @@ where no = '3';
 
 --update
 update guestbook
-set    name = '강용수',
+set    name = '강',
        password = '강',
        content = '개꿀잼 코딩',
        reg_date = sysdate
-where  no = '1';
+where  no = '27' and name='qq' and password='qq';
 
 --search
 
@@ -53,6 +53,8 @@ delete guestbook;
 --시퀀스 삭제
 drop sequence seq_no;
 
+delete guestbook
+where no = '7' and name = 'r';
 
-
-
+--테이블 삭제
+drop table guestbook;

@@ -3,13 +3,11 @@
 <%@ page import="com.javaex.guestbook.*" %>
 
 <%
-int no = Integer.parseInt(request.getParameter("no"));
+	int no = Integer.parseInt(request.getParameter("no"));
 
 GuestBookDao gd = new GuestBookDao();
 
 GuestBookVo gv = gd.getGuest(no);
-
-
 %>
 
 <!DOCTYPE html>

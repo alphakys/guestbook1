@@ -2,12 +2,11 @@
 <%@ page import = "com.javaex.guestbook.*" %>
 <%@ page import = "java.util.List"%>
 
-<% 
-GuestBookDao gd = new GuestBookDao();
+
+<%
+	GuestBookDao gd = new GuestBookDao();
 
 List<GuestBookVo> list = gd.getList();
-
-
 %>
 
 

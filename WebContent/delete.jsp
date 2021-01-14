@@ -4,7 +4,7 @@
 
 
 <%
-request.setCharacterEncoding("UTF-8");
+	request.setCharacterEncoding("UTF-8");
 
 int num = Integer.parseInt(request.getParameter("no"));
 
@@ -13,9 +13,6 @@ String password = request.getParameter("password");
 String name = request.getParameter("name");
 
 GuestBookDao gd = new GuestBookDao();
-
-
-
 %>	
 		
 	

@@ -5,7 +5,7 @@
 <%@ page import="javax.swing.*" %>
 
 <%
-request.setCharacterEncoding("UTF-8");
+	request.setCharacterEncoding("UTF-8");
 // addList에서의 파라미터 값 받기
 
 String name = request.getParameter("name");
@@ -22,7 +22,6 @@ else{
 	response.getWriter().print("이름, 비밀번호, 내용을 반드시 입력해주세요");
 	
 }
-
 %>
 
 
